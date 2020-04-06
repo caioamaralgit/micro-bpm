@@ -11,6 +11,29 @@
 |
 */
 
-$router->get('/api', function () use ($router) {
-    return $router->app->version();
+$router->group(['prefix' => 'api'], function () use ($router) {
+
+    $router->get('roles', 'RolesController@index');
+
+    $router->get('flows', 'FlowsController@index');
+
+    $router->put('flows/{flowId}', function () use ($router) {
+        return $router->app->version();
+    });
+
+    $router->group(['prefix' => 'tasks'], function () use ($router) {
+        $router->get('/', 'TasksController@index');
+
+        $router->post('/', function () use ($router) {
+            return $router->app->version();
+        });
+
+        $router->put('{taskId}', function () use ($router) {
+            return $router->app->version();
+        });
+
+        $router->delete('{taskId}', function () use ($router) {
+            return $router->app->version();
+        });
+    });
 });
