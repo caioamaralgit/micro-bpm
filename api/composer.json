@@ -1,7 +1,7 @@
 {
-    "name": "laravel/lumen",
-    "description": "The Laravel Lumen Framework.",
-    "keywords": ["framework", "laravel", "lumen"],
+    "name": "micro-bpm",
+    "description": "Tasks flow creation tool.",
+    "keywords": ["api", "bpm", "lumen"],
     "license": "MIT",
     "type": "project",
     "require": {
