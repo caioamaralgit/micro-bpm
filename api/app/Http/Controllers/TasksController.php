@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tasks;
+use App\Models\TasksButtons;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
@@ -19,6 +20,17 @@ class TasksController extends Controller
             "type" => $request->type,
             "flow_id" => $request->flow_id
         ]);
+
+        foreach ($request->buttons as $button) {
+            $nextTaskId = $button["next_task_id"] ?? null;
+
+            TasksButtons::create([
+                "name" => $button["name"],
+                "class" => $button["class"],
+                "task_id" => $task["id"],
+                "next_task_id" => $nextTaskId
+            ]);
+        }
 
         return [ "success" => true, "data" => $task ];
     }

@@ -18,5 +18,12 @@ class RouteBindingServiceProvider extends BaseServiceProvider
         $binder->bind('flow', 'App\Models\Flows');
         $binder->bind('task', 'App\Models\Tasks');
 
+        $binder->compositeBind(['task', 'button'], function($taskId, $buttonId) {
+            $task = \App\Models\Tasks::findOrFail($taskId);
+            $button = $task->buttons()->findOrFail($buttonId);
+
+            return [$task, $button];
+        });
+
     }
 } 

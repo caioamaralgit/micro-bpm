@@ -12,7 +12,7 @@ class CreateTasksButtonsTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('class', 20);
-            $table->unsignedInteger('task_id')->nullable();
+            $table->unsignedInteger('task_id');
             $table->unsignedInteger('next_task_id')->nullable();
 
             $table->foreign('task_id')->references('id')->on('tasks')->name('fk_task_id');

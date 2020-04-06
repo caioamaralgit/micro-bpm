@@ -11,25 +11,47 @@
 |
 */
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+/**
+ * Set route groups inside variables
+ */
+$buttons = function () use ($router) {
+    $router->get('/', 'TasksButtonsController@index');
+
+    $router->post('/', 'TasksButtonsController@store');
+
+    $router->put('{button}', 'TasksButtonsController@update');
+
+    $router->delete('{button}', 'TasksButtonsController@delete');
+};
+
+$flows = function () use ($router) {
+    $router->get('/', 'FlowsController@index');
+    
+    $router->post('/', 'FlowsController@store');
+
+    $router->put('{flow}', 'FlowsController@update');
+};
+
+$tasks = function () use ($router, $buttons) {
+    $router->get('/', 'TasksController@index');
+
+    $router->post('/', 'TasksController@store');
+
+    $router->put('{task}', 'TasksController@update');
+
+    $router->delete('{task}', 'TasksController@delete');
+
+    $router->group(['prefix' => '{task}/buttons'], $buttons);
+};
+
+/**
+ * Define routes
+ */
+$router->group(['prefix' => 'api'], function () use ($router, $flows, $tasks) {
 
     $router->get('roles', 'RolesController@index');
 
-    $router->group(['prefix' => 'flows'], function () use ($router) {
-        $router->get('/', 'FlowsController@index');
-        
-        $router->post('/', 'FlowsController@store');
+    $router->group(['prefix' => 'flows'], $flows);
 
-        $router->put('{flow}', 'FlowsController@update');
-    });
-
-    $router->group(['prefix' => 'tasks'], function () use ($router) {
-        $router->get('/', 'TasksController@index');
-
-        $router->post('/', 'TasksController@store');
-
-        $router->put('{task}', 'TasksController@update');
-
-        $router->delete('{task}', 'TasksController@delete');
-    });
+    $router->group(['prefix' => 'tasks'], $tasks);
 });
