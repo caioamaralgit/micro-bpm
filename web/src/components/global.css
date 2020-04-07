@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 400 25px 'Dosis', sans-serif;
+    background: #F0F0F5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.button {
+    align-items: center;
+    border-radius: 6px;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 0.8em;
+    justify-content: space-between;
+    padding: 5px 15px;
+}
+
+.scrollbar {
+    scrollbar-color: #CFD8DC;
+    scrollbar-width: thin;
+}
+
+.scrollbar::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: #CFD8DC;
+    border-radius: 6px;
+}
+
+.scrollbar.dark {
+    scrollbar-color: #404040;
+}
+
+.scrollbar.dark::-webkit-scrollbar-thumb {
+    background-color: #404040;
+}
