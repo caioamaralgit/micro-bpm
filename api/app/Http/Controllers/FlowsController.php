@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class FlowsController extends Controller
 {
     public function index() {
-        $flows = new Flows();
-        return $flows->all();
+        $flows = Flows::with(['tasks.roles'])->get();
+        return $flows;
     }
 
     public function store(Request $request) {

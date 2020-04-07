@@ -6,13 +6,14 @@ import Task from '../../organisms/task';
 
 import Container, { TasksContainer } from './styles';
 
-export default function Flow() {
+export default function Flow({ flow, ModalState }) {
     const [openTasks, setOpenTasks] = useState(false);
+    const [tasks, setTasks] = useState(flow.tasks);
 
     return (
         <Container className="shadow">
             <div className="bg-gray-100 flex justify-between px-3 py-2">
-                <button className="flex-1 mr-1 sm:mr-2 text-left" onClick={() => setOpenTasks(!openTasks)}>Fluxo #1</button>
+                <button className="flex-1 mr-1 sm:mr-2 text-left" onClick={() => setOpenTasks(!openTasks)}>{flow.title}</button>
                 <div className="flex">
                     <Button className="bg-blue-500 button mr-1 sm:mr-2 shadow">
                         <FiEdit2 className="mr-1" />
@@ -26,7 +27,7 @@ export default function Flow() {
                             Remove
                         </span>
                     </Button>
-                    <Button className="bg-green-500 button shadow">
+                    <Button className="bg-green-500 button shadow" onClick={ModalState.open}>
                         <FiPlus className="mr-1" />
                         <span className="hidden sm:inline">
                             Add Task
@@ -36,7 +37,12 @@ export default function Flow() {
             </div>
             <TasksContainer className="dark scrollbar" style={{ maxHeight: openTasks ? '60vh' : '0' }}>
                 <div className="flex items-start mx-5 my-6">
-                    {[1, 2, 3, 4, 5, 6, 7].map(key => (<Task />))}
+                    {tasks.map(task => (
+                        <Task
+                            key={task.id}
+                            task={task}
+                        />
+                    ))}
                 </div>
             </TasksContainer>
         </Container>

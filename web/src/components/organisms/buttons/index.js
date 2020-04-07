@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { FiChevronDown, FiPlus } from 'react-icons/fi';
+import React from 'react';
+import { FiPlus } from 'react-icons/fi';
 
 import Container from './styles';
 import Button from '../../atoms/button';
 import ButtonLine from '../../molecules/button-line';
 
-export default function Buttons() {
+export default function Buttons({ buttons }) {
     return (
         <Container>
             <div>
@@ -15,8 +15,8 @@ export default function Buttons() {
                 </Button>
             </div>
             <div className="flex-1 overflow-y-auto">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map(button => (
-                    <ButtonLine />
+                {buttons.map(button => (
+                    <ButtonLine key={button.id} button={button} />
                 ))}
             </div>
         </Container>

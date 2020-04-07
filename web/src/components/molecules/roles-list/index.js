@@ -1,11 +1,11 @@
 import React from 'react';
 import Role from '../../atoms/role';
 
-export default function RolesList() {
+export default function RolesList({ roles }) {
     return (
         <div className="flex">
-            {[1, 2, 3].map((role) => (
-                <Role />
+            {roles.map((role) => (
+                <Role role={role} />
             ))}
         </div>
     );

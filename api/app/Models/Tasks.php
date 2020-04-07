@@ -21,4 +21,8 @@ class Tasks extends Model
     {
         return $this->hasMany(TasksButtons::class, 'task_id');
     }
+
+    public function roles() {
+        return $this->belongsToMany(Roles::class, 'tasks_roles', 'task_id', 'role_id');
+    }
 }

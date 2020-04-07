@@ -14,4 +14,9 @@ export const ToggleButtonStyles = {
     fontWeight: '300'
 };
 
+export const LoadingImage = styled.img({
+    margin: '0px auto',
+    width: '100px'
+});
+
 export default Container;

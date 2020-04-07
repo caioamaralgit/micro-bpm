@@ -11,4 +11,8 @@ class Roles extends Model
     protected $fillable = [
         'title', 'description',
     ];
+
+    public function tasks() {
+        return $this->belongsToMany(Tasks::class, 'tasks_roles', 'role_id', 'task_id');
+    }
 }

@@ -19,6 +19,6 @@ class TasksButtons extends Model
 
     public function nextTask() 
     {
-        return $this->hasOne(Tasks::class, 'next_task_id');
+        return $this->hasOne(Tasks::class, 'id', 'next_task_id');
     }
 }

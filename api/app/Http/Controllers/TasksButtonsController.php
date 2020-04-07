@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class TasksButtonsController extends Controller
 {
     public function index(Tasks $task) {
-        $buttons = $task->buttons;
+        $buttons = $task->buttons()->with('nextTask')->get();
+
         return $buttons;
     }
 
