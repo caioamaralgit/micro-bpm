@@ -61,5 +61,5 @@ There are many things to do in the project. You can follow the identified issues
 
 [1]: https://github.com/facebook/react
 [2]: https://github.com/laravel/lumen
-[2]: http://localhost
-[3]: https://github.com/caioamaralgit/micro-bpm/issues
+[3]: http://localhost
+[4]: https://github.com/caioamaralgit/micro-bpm/issues
