@@ -30,6 +30,8 @@ $flows = function () use ($router) {
     $router->post('/', 'FlowsController@store');
 
     $router->put('{flow}', 'FlowsController@update');
+
+    $router->delete('{flow}', 'FlowsController@delete');
 };
 
 $tasks = function () use ($router, $buttons) {

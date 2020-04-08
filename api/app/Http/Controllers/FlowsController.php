@@ -32,4 +32,10 @@ class FlowsController extends Controller
 
         return [ "success" => true, "data" => $flow ];
     }
+
+    public function delete(Flows $flow) {
+        $flow->delete();
+
+        return [ "success" => true ];
+    }
 }
