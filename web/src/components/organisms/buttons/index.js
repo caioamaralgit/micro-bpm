@@ -11,7 +11,7 @@ export default function Buttons({ buttons }) {
             <div>
                 <Button className="bg-green-500 button float-right my-2">
                     <FiPlus className="mr-1" />
-                    New Button
+                    Create Button
                 </Button>
             </div>
             <div className="flex-1 overflow-y-auto">

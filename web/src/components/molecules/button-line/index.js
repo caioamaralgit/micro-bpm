@@ -5,10 +5,13 @@ import Button from '../../atoms/button';
 export default function ButtonLine({ button }) {
     return (
         <div className="flex justify-between my-2">
-            <Button className="bg-green-500 button">
-                New Button
+            <Button className={`${button.class} button`}>
+                {button.name}
             </Button>
-            <span>{button.next_task ? button.next_task.title : ""}</span>
+            <span>
+                <strong>Next: </strong>
+                {button.next_task ? button.next_task.title : ""}
+            </span>
         </div>
     );
 }
