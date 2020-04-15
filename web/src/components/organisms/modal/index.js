@@ -9,21 +9,25 @@ export function useModalState() {
     const [show, setShow] = useState(false);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState(null);
-    const [buttons, setButtons] = useState(null);
 
     const open = () => setShow(true);
     const close = () => setShow(false);
 
+    const updateAndShow = ({ title, content }) => {
+        setTitle(title);
+        setContent(content);
+        setShow(true);
+    }
+
     return {
         show, open, close,
+        updateAndShow,
         title, setTitle,
         content, setContent,
-        buttons, setButtons
     }
 }
 
 export default function Modal({
-    buttons,
     close,
     content,
     show = false,
@@ -39,12 +43,9 @@ export default function Modal({
                         <FiX size="18" />
                     </Button>
                 </header>
-                <div className="font-light my-3">
+                <div className="font-light mt-3">
                     {content}
                 </div>
-                <footer className="flex justify-end">
-                    {buttons}
-                </footer>
             </Container>
         </div>
     );

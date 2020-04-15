@@ -18,7 +18,7 @@ class FlowsController extends Controller
             "description" => $request->description
         ]);
 
-        return [ "success" => true, "data" => $flow ];
+        return [ "success" => true, "data" => $flow->load('tasks.roles') ];
     }
 
     public function update(Request $request, Flows $flow) {
@@ -30,7 +30,7 @@ class FlowsController extends Controller
         $flow->description = $request->description;
         $flow->save();
 
-        return [ "success" => true, "data" => $flow ];
+        return [ "success" => true, "data" => $flow->load('tasks.roles')];
     }
 
     public function delete(Flows $flow) {

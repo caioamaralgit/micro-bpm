@@ -23,6 +23,27 @@ body {
     padding: 5px 15px;
 }
 
+.input {
+    border-width: 1px 1px 3px 1px;
+    border-color: transparent;
+    border-bottom-color: #718096;
+    border-radius: 6px;
+    background-color: #EBF8FF;
+    padding: 5px 10px;
+    transition: border-color 0.7s, background-color 0.7s;
+}
+
+.input:focus {
+    border-color: #4299E1;
+    background-color: #FFFFFF;
+}
+
+textarea.input {
+    min-height: 130px;
+    resize: vertical;
+    width: 100%;
+}
+
 .scrollbar {
     scrollbar-color: #CFD8DC;
     scrollbar-width: thin;

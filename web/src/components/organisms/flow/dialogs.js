@@ -1,25 +1,51 @@
-import Form from "./forms";
+import React from 'react';
+import Form, { Delete } from "./forms";
 
-export const openNewDialog = (ModalState) => {
-    const content = Form();
+export default class Dialog {
+    constructor(modal, contentState) {
+        this.modal = modal;
+        this.contentState = contentState;
+    }
 
-    ModalState.setTitle('New Flow');
-    ModalState.setContent(content.form);
-    ModalState.setButtons(content.buttons);
+    openNewDialog = () => {
+        const data = {
+            title: 'New Flow',
+            content: <Form
+                flows={this.contentState.flows}
+                setFlows={this.contentState.setFlows}
+                closeModal={this.modal.close}
+            />
+        };
 
-    ModalState.open();
-}
+        this.modal.updateAndShow(data);
+    }
 
-export const openEditDialog = (ModalState, flow) => {
-    const content = Form({ flow, data: ModalState.data, setData: ModalState.setData });
+    openEditDialog = (flow) => {
+        const data = {
+            title: 'Edit Flow',
+            content: <Form
+                flow={flow}
+                flows={this.contentState.flows}
+                setFlows={this.contentState.setFlows}
+                closeModal={this.modal.close}
+                openDeleteDialog={this.openDeleteDialog}
+            />
+        };
 
-    ModalState.setTitle('Edit Flow');
-    ModalState.setContent(content.form);
-    ModalState.setButtons(content.buttons);
+        this.modal.updateAndShow(data);
+    }
 
-    ModalState.open();
-}
+    openDeleteDialog = (flow) => {
+        const data = {
+            title: 'Delete Flow',
+            content: <Delete
+                flow={flow}
+                flows={this.contentState.flows}
+                setFlows={this.contentState.setFlows}
+                closeModal={this.modal.close}
+            />
+        };
 
-export const openDeleteDialog = (ModalState) => {
-
+        this.modal.updateAndShow(data);
+    }
 }
